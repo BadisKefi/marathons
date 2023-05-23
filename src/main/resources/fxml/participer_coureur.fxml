@@ -34,7 +34,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <Label text="Selectionner un marathon active :" GridPane.rowIndex="1" />
+      <Label text="Selectionner un marathon en cours :" GridPane.rowIndex="1" />
       <ChoiceBox fx:id="marathon_choicebox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <Label text="nom :" GridPane.rowIndex="2" />
       <Label text="prenom :" GridPane.rowIndex="3" />
