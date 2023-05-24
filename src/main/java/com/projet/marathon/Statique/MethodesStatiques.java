@@ -15,6 +15,8 @@ public  class MethodesStatiques {
     private static Scene scene;
     private static Parent root;
 
+    public static boolean full = false;
+
     public static void redirect(ActionEvent event, String page) throws IOException {
         FXMLLoader loader = new FXMLLoader(MethodesStatiques.class.getClass().getResource(page));
         root = loader.load();

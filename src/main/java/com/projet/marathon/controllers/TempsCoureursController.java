@@ -1,5 +1,6 @@
 package com.projet.marathon.controllers;
 
+import com.projet.marathon.Statique.MethodesStatiques;
 import com.projet.marathon.entities.Coureur;
 import com.projet.marathon.DbConnexion;
 import com.projet.marathon.entities.Marathon;
@@ -66,7 +67,7 @@ public class TempsCoureursController implements Initializable {
         Marathon marathon = new Marathon();
         String query = "select id, nom from marathon where id = ?";
         con = DbConnexion.getCon();
-         try {
+        try {
             st = con.prepareStatement(query);
             st.setInt(1, id_marathon);
             mrs = st.executeQuery();
@@ -74,9 +75,9 @@ public class TempsCoureursController implements Initializable {
                 marathon.setId(mrs.getInt("id"));
                 marathon.setNom(mrs.getString("nom"));
             }
-         } catch (SQLException e) {
-             throw new RuntimeException(e);
-         }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return marathon;
     }
     public ObservableList<Coureur> getCoureurs() {
@@ -199,16 +200,18 @@ public class TempsCoureursController implements Initializable {
         // and save it in the string bellow
         String vainqueur = "";
         Coureur vainqueurCoureur = null;
-        float maxTemps = Float.MIN_VALUE;
+        float minTemps = Float.MAX_VALUE;
 
         for (Coureur coureur : getCoureurs()) {
-            if (coureur.getTemps() > maxTemps) {
-                maxTemps = coureur.getTemps();
+            if(coureur.getTemps() == 0)
+                AlertMe("saisir tout les temps", "temps 0 erreur", Alert.AlertType.ERROR);
+            else if (coureur.getTemps() < minTemps) {
+                minTemps = coureur.getTemps();
                 vainqueurCoureur = coureur;
             }
         }
         if (vainqueurCoureur != null) {
-            vainqueur = vainqueurCoureur.getNom() + vainqueurCoureur.getPrenom();
+            vainqueur = vainqueurCoureur.getNom() + " " + vainqueurCoureur.getPrenom();
         }
 
         String update = "update marathon set vainqueur = ? where id = ?";
@@ -216,7 +219,7 @@ public class TempsCoureursController implements Initializable {
         try {
             st = con.prepareStatement(update);
             st.setString(1, vainqueur);
-            st.setInt(2, selectedId);
+            st.setInt(2, selectedMarathonId);
             st.executeUpdate();
             listerCoureurs();
             System.out.println(vainqueur);
@@ -234,6 +237,8 @@ public class TempsCoureursController implements Initializable {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(MethodesStatiques.full);
+
         stage.show();
     }
     @Override

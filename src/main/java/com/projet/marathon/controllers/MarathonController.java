@@ -1,6 +1,7 @@
 package com.projet.marathon.controllers;
 
 import com.projet.marathon.DbConnexion;
+import com.projet.marathon.Statique.MethodesStatiques;
 import com.projet.marathon.entities.Marathon;
 import com.projet.marathon.Statique.RoleUtilisateur;
 import javafx.event.ActionEvent;
@@ -58,7 +59,8 @@ public class MarathonController implements Initializable {
     private TableColumn<Marathon,Date> date_column = new TableColumn<>();
     @FXML
     private TableColumn<Marathon,String> etat_column = new TableColumn<>();
-
+    @FXML
+    private TableColumn<Marathon,String> vainqueur_column = new TableColumn<>();
     public MarathonController() {
     }
 
@@ -78,6 +80,7 @@ public class MarathonController implements Initializable {
         distance_column.setCellValueFactory(new PropertyValueFactory<>("distance"));
         date_column.setCellValueFactory(new PropertyValueFactory<>("date"));
         etat_column.setCellValueFactory(new PropertyValueFactory<>("etat"));
+        vainqueur_column.setCellValueFactory(new PropertyValueFactory<>("vainqueur"));
 
 
 
@@ -94,7 +97,7 @@ public class MarathonController implements Initializable {
                 float distance = resultSet.getFloat("distance");
                 Date date = resultSet.getDate("date");
                 String etat = resultSet.getString("etat");
-
+                String vainqueur = resultSet.getString("vainqueur");
 
                 Marathon marathon = new Marathon();
                 marathon.setId(id);
@@ -104,7 +107,7 @@ public class MarathonController implements Initializable {
                 marathon.setDistance(distance);
                 marathon.setDate(date);
                 marathon.setEtat(etat);
-
+                marathon.setVainqueur(vainqueur);
                 table.getItems().add(marathon);
             }
             table.refresh();
@@ -258,6 +261,7 @@ public class MarathonController implements Initializable {
                         Integer marathonDistance = resultSet.getInt("distance");
                         Date date = resultSet.getDate("date");
                         String etat = resultSet.getString("etat");
+                        String vainqueur = resultSet.getString("vainqueur");
 
                         Marathon marathon = new Marathon();
                         marathon.setId(marathonId);
@@ -267,6 +271,7 @@ public class MarathonController implements Initializable {
                         marathon.setDistance(marathonDistance);
                         marathon.setDate(date);
                         marathon.setEtat(etat);
+                        marathon.setVainqueur(vainqueur);
 
                         table.getItems().add(marathon);
                     }
@@ -331,6 +336,7 @@ public class MarathonController implements Initializable {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(MethodesStatiques.full);
         stage.show();
     }
     @FXML
@@ -341,6 +347,8 @@ public class MarathonController implements Initializable {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(MethodesStatiques.full);
+
         stage.show();
     }
     @FXML
@@ -351,6 +359,8 @@ public class MarathonController implements Initializable {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(MethodesStatiques.full);
+
         stage.show();
     }
     @FXML
@@ -361,6 +371,8 @@ public class MarathonController implements Initializable {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(MethodesStatiques.full);
+
         stage.show();
     }
     @FXML

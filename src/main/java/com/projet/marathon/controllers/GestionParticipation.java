@@ -1,6 +1,7 @@
 package com.projet.marathon.controllers;
 
 import com.projet.marathon.DbConnexion;
+import com.projet.marathon.Statique.MethodesStatiques;
 import com.projet.marathon.email.Email;
 import com.projet.marathon.entities.Coureur;
 import com.projet.marathon.entities.Marathon;
@@ -209,6 +210,8 @@ public class GestionParticipation implements Initializable {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(MethodesStatiques.full);
+
         stage.show();
     }
     @FXML
@@ -219,6 +222,8 @@ public class GestionParticipation implements Initializable {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(MethodesStatiques.full);
+
         stage.show();
     }
 

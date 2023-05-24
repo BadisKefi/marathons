@@ -91,6 +91,8 @@ public class LoginController {
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene = new Scene(root);
                     stage.setScene(scene);
+                    stage.setFullScreen(MethodesStatiques.full);
+
                     stage.show();
                 }
                 else if(RoleUtilisateur.role.equals("agent_chrono")){
@@ -99,6 +101,8 @@ public class LoginController {
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene = new Scene(root);
                     stage.setScene(scene);
+                    stage.setFullScreen(MethodesStatiques.full);
+
                     stage.show();
                 }
                 else {
@@ -107,6 +111,8 @@ public class LoginController {
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene = new Scene(root);
                     stage.setScene(scene);
+                    stage.setFullScreen(MethodesStatiques.full);
+
                     stage.show();
                 }
             } catch (IOException e) {
@@ -126,6 +132,8 @@ public class LoginController {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(MethodesStatiques.full);
+
         stage.show();
     }
 

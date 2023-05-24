@@ -1,6 +1,7 @@
 package com.projet.marathon.controllers;
 
 import com.projet.marathon.DbConnexion;
+import com.projet.marathon.Statique.MethodesStatiques;
 import com.projet.marathon.entities.Utilisateur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -144,6 +145,7 @@ public class AgentChronoController implements Initializable {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(MethodesStatiques.full);
         stage.show();
     }
     @Override

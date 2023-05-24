@@ -88,6 +88,8 @@ public class InscriptionController {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(MethodesStatiques.full);
+
         stage.show();
     }
 

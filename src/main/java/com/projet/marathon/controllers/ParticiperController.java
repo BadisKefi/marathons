@@ -1,6 +1,7 @@
 package com.projet.marathon.controllers;
 
 import com.projet.marathon.DbConnexion;
+import com.projet.marathon.Statique.MethodesStatiques;
 import com.projet.marathon.entities.Marathon;
 import com.projet.marathon.Statique.RoleUtilisateur;
 import javafx.collections.FXCollections;
@@ -57,7 +58,7 @@ public class ParticiperController implements Initializable {
         con = DbConnexion.getCon();
         try {
             st = con.prepareStatement(query);
-            st.setString(1,"en cours");
+            st.setString(1,"pas encore");
             rs = st.executeQuery();
             while (rs.next()){
                 Marathon m = new Marathon();
@@ -160,6 +161,8 @@ public class ParticiperController implements Initializable {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(MethodesStatiques.full);
+
         stage.show();
     }
 
